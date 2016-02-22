@@ -1,7 +1,7 @@
 {
-  "name": "mern-starter",
-  "version": "1.0.0",
-  "description": "Boilerplate project for building Iosmorphic apps using React and Redux",
+  "name": "security_iot",
+  "version": "0.1.0",
+  "description": "Client and Serverside project for the Security Assignment of the module 'Microcontrollers'.",
   "scripts": {
     "test": "mocha shared/tests/*.spec.js --compilers js:babel-register",
     "test:server": "cross-env NODE_ENV=test PORT=8080 MONGO_URL=mongodb://localhost:27017/mern-test mocha --compilers js:babel-core/register --recursive server/tests/**/*.spec.js",
@@ -16,13 +16,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hashnode/mern-starter.git"
+    "url": "git+https://github.com/rvoortman/security_iot.git"
   },
   "bugs": {
-    "url": "https://github.com/Hashnode/mern-starter/issues"
+    "url": "https://github.com/rvoortman/security_iot/issues"
   },
-  "homepage": "https://github.com/Hashnode/mern-starter#readme",
-  "author": "Prashant Abhishek <prashant.abhishek7g@gmail.com>, Mayank Chandola <imayankchd@gmail.com>, Sandeep Panda <sandeep@hashnode.com>, Syed Fazle Rahman <fazle@hashnode.com>, Alkshendra Maurya <alkshendra@hashnode.com>",
+  "homepage": "https://github.com/rvoortman/security_iot",
+  "author": "Robbin Voortman <341237@student.saxion.nl>, Dirk-Jan Wassink <342195@student.saxion.nl>, Rob Gerritsen <344598@student.saxion.nl>",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.4.5",
@@ -39,6 +39,7 @@
     "redux": "^3.1.5",
     "redux-thunk": "^1.0.3",
     "sanitize-html": "^1.11.3",
+    "serialport": "^2.0.6",
     "slug": "^0.9.1"
   },
   "devDependencies": {
