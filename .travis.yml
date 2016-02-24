@@ -4,3 +4,7 @@ node_js:
   - '4'
 before_install:
 - 'npm install -g npm@latest'
+notifications:
+  email:
+    on_success: never
+    on_failure: always
