@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "Client and Serverside project for the Security Assignment of the module 'Microcontrollers'.",
   "scripts": {
-    "test": "mocha shared/tests/*.spec.js --compilers js:babel-register",
-    "test:server": "cross-env NODE_ENV=test PORT=8080 MONGO_URL=mongodb://localhost:27017/mern-test mocha --compilers js:babel-core/register --recursive server/tests/**/*.spec.js",
+    "test": "npm run cucumber-server && npm run cucumber-client",
+    "cucumber-server" : "./node_modules/.bin/cucumber.js ./tests/server",
+    "cucumber-client" : "./node_modules/.bin/cucumber.js ./tests/client",
     "start": "cross-env NODE_ENV=development node index.js",
     "start:prod": "cross-env NODE_ENV=production node index.js",
     "bs": "npm run clean && npm run build && npm run start:prod",
@@ -55,6 +56,7 @@
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^2.1.0",
+    "cucumber": "^0.9.5",
     "deep-freeze": "0.0.1",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^4.0.0",
@@ -70,7 +72,8 @@
     "supertest": "^1.1.0",
     "webpack": "^1.12.12",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.6.4"
+    "webpack-hot-middleware": "^2.6.4",
+    "zombie": "^4.2.1"
   },
   "engines": {
     "node": ">=4"
