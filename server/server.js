@@ -3,6 +3,12 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 
+/* Listener for unhandled errors in promises */
+process.on('unhandledRejection', function(reason, p) {
+  console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
+  // application specific logging, throwing an error, or other logic here
+});
+
 // Webpack Requirements
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
@@ -32,7 +38,7 @@ import { match, RouterContext } from 'react-router';
 // Import required modules
 import routes from '../shared/routes';
 import { fetchComponentData } from './util/fetchData';
-import posts from './routes/post.routes';
+import users from './routes/user.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -50,7 +56,7 @@ mongoose.connect(serverConfig.mongoURL, function (err, connection) {
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../static')));
-app.use('/api', posts);
+app.use('/', users);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -109,6 +115,17 @@ app.use((req, res) => {
       });
   });
 });
+
+//import AcceslogRepo from './repositories/accesslog.repository.js';
+//async function doStuff() {
+//  let log = {action: AccessConstants.LOGIN_ALARM};
+//  await AcceslogRepo.store(log);
+//  let logs = await AcceslogRepo.findAll();
+//  console.log(logs);
+//}
+//
+//doStuff();
+
 
 // start app
 app.listen(serverConfig.port, (error) => {

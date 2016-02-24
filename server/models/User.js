@@ -4,7 +4,6 @@ const Schema = Mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 let UserSchema = new Schema({
-    _id: ObjectId,
     userName: {
         type: String,
         index: true
@@ -16,7 +15,13 @@ let UserSchema = new Schema({
     token: {
         type: Number,
         index: true
+    },
+    dateAdded: {
+        type: Date,
+        default: Date.now,
+        required: true
     }
 });
 
-Mongoose.model('Users', UserSchema);
+let User = Mongoose.model('users', UserSchema);
+module.exports = User;
