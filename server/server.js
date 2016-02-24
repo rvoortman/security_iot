@@ -9,6 +9,10 @@ import config from '../webpack.config.dev';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
+//Importing models
+import Accesslog from './models/accesslog.js';
+import * as AccessConstants from '../shared/constants/accesslog_constants.js';
+
 // Initialize the Express App
 const app = new Express();
 
@@ -18,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-// React And Redux Setup
+// React And Redux Setups
 import { configureStore } from '../shared/redux/store/configureStore';
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -109,8 +113,9 @@ app.use((req, res) => {
 // start app
 app.listen(serverConfig.port, (error) => {
   if (!error) {
-    console.log('MERN is running on port: '+serverConfig.port+'! Build something amazing!');
+    console.log('MERN is running on port: '+serverConfig.port);
   }
 });
 
 module.exports = app;
+
